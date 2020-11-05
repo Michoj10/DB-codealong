@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Phonebook</title>
+</head>
+<body>
+<script type="text/javascript" src="{{url_for('static', filename='script.js')}}"></script>
+
+<h1>Welcome to Phonebook!</h1>
+<form>
+	<input type="text" name="search" placeholder="Search..." id="search_bar" oninput="search_contact();">
+	<a href="{{url_for('add')}}">+ Add contact</a>
+</form><br>
+
+<ul>
+	{% for c in contacts %}
+	<li class="contact">{{c.name}}: {{c.phone_num}} <a href="{{url_for('delete', con_id = c.id)}}">Delete</a></li>
+	{% endfor %}
+</ul>
+</body>
+</html>
